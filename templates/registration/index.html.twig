@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registration{% endblock %}
+
+{% block body %}
+<style>
+    div {margin-bottom: 7px;}
+    label {margin-right: 5px;}
+    button {padding: 5px; margin-top: 7px;}
+    div ul {background: red;}
+</style>
+
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+{% endblock %}

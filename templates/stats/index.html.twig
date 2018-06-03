@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    td {padding: 5px;}
+</style>
+
+<div class="example-wrapper">
+    <div class="regs">
+	<div><h1>Registrations this month: </h1></div>
+	<table>
+	    <thead>
+		<td><h3>City</h3></td>
+		<td><h3>Count</h3></td>
+	    </thead>
+	    {% for item in countThisMonth %}
+	    <tr>
+		<td>{{ item.city }}</td>
+		<td>{{ item.count }}</td>
+	    </tr>
+	    {% endfor %}
+	</table>
+    </div>
+
+    <div class="uniques">
+	<div><h1>Unique visits this week: </h1></div>
+	<table>
+	    <thead>
+		<td><h3>Date</h3></td>
+		<td><h3>Count</h3></td>
+	    </thead>
+	    {% for item in countUniqueVisits %}
+	    <tr>
+		<td>{{ item.date }}</td>
+		<td>{{ item.count }}</td>
+	    </tr>
+	    {% endfor %}
+	</table>
+    </div>
+
+    <div class="user-stats">
+	<div><h1>User visits this week: </h1></div>
+	<table>
+	    {% for item in userStatsThisWeek %}
+	    <thead>
+		<td><h3>Name</h3></td>
+		<td><h3>{{ item.firstName }} {{ item.secondName }}</h3></td>
+	    </thead>
+	    <thead>
+		<td>Date</td>
+		<td>Count</td>
+	    </thead>
+	    {% for stats in item.visits %}
+	    <tr>
+		<td>{{ stats.date }}</td>
+		<td>{{ stats.count }}</td>
+	    </tr>
+	    {% endfor %}
+	    {% endfor %}
+	</table>
+    </div>
+
+</div>
+{% endblock %}
